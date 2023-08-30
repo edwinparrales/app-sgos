@@ -39,7 +39,7 @@
         </div>
     </section>
 
-    <!-- Modal Agendar profesional -->
+    <!-- Modal Agendar profesional activo -->
     <div id="modalregistro" class="modal fade" role="dialog">
         <div class="modal-dialog">
 

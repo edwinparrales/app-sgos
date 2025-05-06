@@ -20,7 +20,9 @@
 
                                         <div class="form-group">
                                             <label for="tdocumento">Tipo de documento:</label>
-                                            <input type="text" class="form-control" id="tdocumento" placeholder="tipo documento" name="tdocumento">
+                                             <select name="tdocumento" id="tdocumento" class="form-control"></select>
+
+                                            
                                         </div>
                                         <div class="form-group">
                                             <label for="dni">Dni:</label>
@@ -147,7 +149,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="tipo documento">Tipo de documento:</label>
-                                    <input type="text" class=" select2-chosen" id="xtdocumento" placeholder="tipo documento" name="xtdocumento">
+                                    <select name="xtdocumento" id="xtdocumento" class="form-control"></select>
                                 </div>
                                 <div class="form-group">
                                     <label for="dni">Dni:</label>

@@ -22,7 +22,7 @@
             <?php echo "<div class=\"bg-warning\"><h3>" . $this->session->flashdata('error') . "</h3></div>" ?>
             <div class="panel-heading"><h3>Login Sgos</h3></div>
             <div class="panel-body" >
-                <form class="form-signin" method="post" action="login/inicio">  
+                <form class="form-signin" method="post" action="<?php echo base_url('login/inicio')?>">  
                     <div class="row center-block">
                         <div class="form-group center-block">
                             <img class="profile-img"

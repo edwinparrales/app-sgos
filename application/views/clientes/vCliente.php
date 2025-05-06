@@ -8,18 +8,18 @@
 
             </ul>
 
-            <div class="tab-content">
-                <div class="tab-pane active" id="tab1">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-offset-1">
-                            <div class="panel panel-info">
+            <div class="tab-content" >
+                <div class="tab-pane active" id="tab1" >
+                    <div class="row" style="background-color: #1B2631;">
+                        <div class="col-lg-6 col-md-offset-1" >
+                            <div class="panel panel-info" style="margin-top: 4px;">
                                 <div class="panel-heading">Registrar Cliente</div>
                                 <div class="panel-body" >
                                     <div class="warning" id="msj" style=" font-weight:bold"></div>      
                                     <form method="POST" action="" id="frmregistrocliente">
 
                                         <div class="form-group">
-                                            <label for="tipo documento">Tipo de documento:</label>
+                                            <label for="tdocumento">Tipo de documento:</label>
                                             <input type="text" class="form-control" id="tdocumento" placeholder="tipo documento" name="tdocumento">
                                         </div>
                                         <div class="form-group">
@@ -392,7 +392,7 @@
 </script>
 
 <script type="text/javascript">
-    var data = [{id: 'CEDULA', text: 'Cedula'}, {id: 'TI', text: 'Tarjeta de identidad'}, {id: 'RUT', text: 'Registro unico tributario(Rut)'}];
+    const data = [{id: 'CEDULA', text: 'Cedula'}, {id: 'TI', text: 'Tarjeta de identidad'}, {id: 'RUT', text: 'Registro unico tributario(Rut)'}];
 
     $("#tdocumento").select2({
         allowClear: true,

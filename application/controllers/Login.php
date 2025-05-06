@@ -12,6 +12,7 @@ class Login extends CI_Controller {
     }
 
     public function index() {
+       // $this->session->set_flashdata('error',false);
         $this->load->view('sots/frmlogin');
     }
 

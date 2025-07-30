@@ -14,15 +14,15 @@
 
 </head>
 
-<body class="d-flex  justify-content-center">
+<body>
 
 
 
-    <div class="container-sm w-50 mt-5">
+    <div class="container  col-md-5 col-lg-3 col-sm-12" style="margin-top: 150px !important;">
         <div class="panel panel-info center-block">
 
             <div class="panel-heading" style="display: flex;">
-                <img class="profile-img" src="<?php echo base_url('public/img/logo.jpg') ?>" width="50" style="margin: 3px;">
+                <img class="img-thumbnail" src="<?php echo base_url('public/img/logo.jpg') ?>" width="50" style="margin: 3px;">
                 <h3>Login Sgos</h3>
 
             </div>

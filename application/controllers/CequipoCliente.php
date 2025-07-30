@@ -175,7 +175,7 @@ class CequipoCliente extends CI_Controller {
         
     }
         public function cmbDsp() {
-    	echo "Hola";
+
         $this->load->model('Model_Dispositivo');
         $q=$this->input->get('q');  
     

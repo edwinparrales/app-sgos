@@ -18,11 +18,12 @@ class Login extends CI_Controller {
 
     public function inicio() {
 
-        $usuario = $this->input->post('usuario');
-        $password = $this->input->post('password');
+         $usuario = $this->input->post('usuario');
+         $password = $this->input->post('password');
         //cargar el modelo invocar el metodo y hacer la consulta a la BDD
-
+//
         $fila = $this->Model_Login->validar($usuario, md5($password));
+
 
         if ($fila != null) {
             $usuario = array(
@@ -35,13 +36,13 @@ class Login extends CI_Controller {
             $this->session->set_userdata($usuario);
 
             redirect('Inicio/index');
-            
+
         } else {
-          
-            
+
+
             $this->session->set_flashdata('error','Datos incorrectos');
-            
-            
+
+
             redirect(base_url());
         }
     }

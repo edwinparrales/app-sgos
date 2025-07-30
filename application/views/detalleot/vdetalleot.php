@@ -432,137 +432,133 @@
 </div>
 
 <script type="text/javascript">
-    $(document).ready(function () {
-        mostrardatos();
-        
-        mostrardatosDteOt() ;
-        
-        
-        
-        
-        
-    $("#tablaAgenda").on("click", "#btnreporte", (function (event) {
-        vcodAgn=$(this).parent().parent().children("td:eq(0)").text();
-        vcodot =$(this).parent().parent().children("td:eq(2)").text();
-        vinfoeq = $(this).parent().parent().children("td:eq(8)").text();
-        $("#codot").val(vcodot);
-        $("#infeqcliente").val(vinfoeq);
-        $("#cod_agenda").val(vcodAgn);
-        
+
+	const baseUrl = "<?php echo base_url(); ?>";
+	console.log(baseUrl);
+
+	$(document).ready(function () {
+
+		mostrardatos();
+
+		mostrardatosDteOt();
 
 
-    }));
-        
-//             METODO PARA ELIMINAR REGISTROS DE DETALLE SERVICIOS EN LA OT   
-    $("#tbDetalleOt").on("click", "#btneliminar", (function (event) {
-        vid=$(this).parent().parent().children("td:eq(0)").text();
-        swal({
-            title: "¿Esta seguro de eliminar el registro?",
-            text: "Esto lo eliminara definitivamente",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "¡Eliminar!",
-            cancelButtonText: "Cancelar",
-            closeOnConfirm: false,
-            closeOnCancel: false},
-                function (isConfirm) {
-                    if (isConfirm) {
-                        $.ajax({
-                            url: "<?php echo base_url('CdetalleOt/eliminar') ?>",
-                            type: "POST",
-                            data: {id: vid},
-                            success: function (respuesta) {
-                                if(respuesta=="Registro Eliminado"){
-                                    swal("El registro fue eliminado","Aceptar","success");
-                                     mostrardatosDteOt() ;
-                                }else{
-                                    
-                                    alert("Error !No se puede eliminar el registro¡");
-                                }
-
-                            }
-                        });
-
-                    } else {
-                        swal("Operación Cancelada",
-                                "El registro no sera eliminado",
-                                "error");
-                    }
-                });
-                
-       mostrardatosDteOt() ;
+		$("#tablaAgenda").on("click", "#btnreporte", (function (event) {
+			vcodAgn = $(this).parent().parent().children("td:eq(0)").text();
+			vcodot = $(this).parent().parent().children("td:eq(2)").text();
+			vinfoeq = $(this).parent().parent().children("td:eq(8)").text();
+			$("#codot").val(vcodot);
+			$("#infeqcliente").val(vinfoeq);
+			$("#cod_agenda").val(vcodAgn);
 
 
+		}));
 
-    }));
-        
-        
-        
-        
-        
-        
-        
-        
-       $("body").on("click", "#tbDetalleOt #btneditar", function () {
-           vcodigo = $(this).parent().parent().children("td:eq(0)").text();
-           vidot= $(this).parent().parent().children("td:eq(1)").text();
-           vidser= $(this).parent().parent().children("td:eq(2)").text();
-           vobser= $(this).parent().parent().children("td:eq(3)").text();
-           vdispo= $(this).parent().parent().children("td:eq(4)").text();
-           vmodelo= $(this).parent().parent().children("td:eq(5)").text();
-           vmarca= $(this).parent().parent().children("td:eq(6)").text();
-           vseriales= $(this).parent().parent().children("td:eq(7)").text();
-           vcapacidad= $(this).parent().parent().children("td:eq(8)").text();
-           vvalDispo= $(this).parent().parent().children("td:eq(9)").text();
-           vprove= $(this).parent().parent().children("td:eq(10)").text();
-           vfactura= $(this).parent().parent().children("td:eq(11)").text();
-           vequipoClient= $(this).parent().parent().children("td:eq(12)").text();
-           
-            $("#idDetot").val(vcodigo);
-            $("#xcodot").val(vidot);
-            $("#xinfeqcliente").val(vequipoClient);
-            $("#xselectSer").val(vidser);
-            $("#xobservaciones").val(vobser);
-            $("#xdispositivo").val(vdispo);
-            $("#xmodelo").val(vmodelo);
-            $("#xmarca").val(vmarca);
-            $("#xserial").val(vseriales);
-            $("#xcapacidad").val(vcapacidad);
-            $("#xvalor").val(vvalDispo);
-            $("#xproveedor").val(vprove);
-            ("#xfactura").val(vfactura);
-              
-           
-        });
-        
-      
-    });
-    
-    $("#btnupdate").click(function(){
-        
-        event.preventDefault();
-     
-        
-        $.ajax({
-            url: "<?php echo base_url('/CdetalleOt/actualizar') ?>",
-            type: "POST",
-            data: $("#frmupdate").serialize(),
-            success:function(respuesta){
-                alert(respuesta);
-                    
+		// METODO PARA ELIMINAR REGISTROS DE DETALLE SERVICIOS EN LA OT
+		$("#tbDetalleOt").on("click", "#btneliminar", (function (event) {
+			vid = $(this).parent().parent().children("td:eq(0)").text();
+			swal({
+					title: "¿Esta seguro de eliminar el registro?",
+					text: "Esto lo eliminara definitivamente",
+					type: "warning",
+					showCancelButton: true,
+					confirmButtonColor: "#DD6B55",
+					confirmButtonText: "¡Eliminar!",
+					cancelButtonText: "Cancelar",
+					closeOnConfirm: false,
+					closeOnCancel: false
+				},
+				function (isConfirm) {
+					if (isConfirm) {
+						$.ajax({
+							url: "<?php echo base_url('CdetalleOt/eliminar') ?>",
+							type: "POST",
+							data: {id: vid},
+							success: function (respuesta) {
+								if (respuesta == "Registro Eliminado") {
+									swal("El registro fue eliminado", "Aceptar", "success");
+									mostrardatosDteOt();
+								} else {
 
-            },
-                    error:function (data){
-                        alert(data);
-                    }
-                    
-        });
+									alert("Error !No se puede eliminar el registro¡");
+								}
 
-       mostrardatosDteOt();
+							}
+						});
 
-        
-    });
+					} else {
+						swal("Operación Cancelada",
+							"El registro no sera eliminado",
+							"error");
+					}
+				});
+
+			mostrardatosDteOt();
+
+
+		}));
+
+
+		$("body").on("click", "#tbDetalleOt #btneditar", function () {
+			vcodigo = $(this).parent().parent().children("td:eq(0)").text();
+			vidot = $(this).parent().parent().children("td:eq(1)").text();
+			vidser = $(this).parent().parent().children("td:eq(2)").text();
+			vobser = $(this).parent().parent().children("td:eq(3)").text();
+			vdispo = $(this).parent().parent().children("td:eq(4)").text();
+			vmodelo = $(this).parent().parent().children("td:eq(5)").text();
+			vmarca = $(this).parent().parent().children("td:eq(6)").text();
+			vseriales = $(this).parent().parent().children("td:eq(7)").text();
+			vcapacidad = $(this).parent().parent().children("td:eq(8)").text();
+			vvalDispo = $(this).parent().parent().children("td:eq(9)").text();
+			vprove = $(this).parent().parent().children("td:eq(10)").text();
+			vfactura = $(this).parent().parent().children("td:eq(11)").text();
+			vequipoClient = $(this).parent().parent().children("td:eq(12)").text();
+
+			$("#idDetot").val(vcodigo);
+			$("#xcodot").val(vidot);
+			$("#xinfeqcliente").val(vequipoClient);
+			$("#xselectSer").val(vidser);
+			$("#xobservaciones").val(vobser);
+			$("#xdispositivo").val(vdispo);
+			$("#xmodelo").val(vmodelo);
+			$("#xmarca").val(vmarca);
+			$("#xserial").val(vseriales);
+			$("#xcapacidad").val(vcapacidad);
+			$("#xvalor").val(vvalDispo);
+			$("#xproveedor").val(vprove);
+			("#xfactura").val(vfactura);
+
+
+		});
+
+
+	});
+	//Fin document ready
+
+	$("#btnupdate").click(function () {
+
+		event.preventDefault();
+
+
+		$.ajax({
+			url: "<?php echo base_url('/CdetalleOt/actualizar') ?>",
+			type: "POST",
+			data: $("#frmupdate").serialize(),
+			success: function (respuesta) {
+				alert(respuesta);
+
+
+			},
+			error: function (data) {
+				alert(data);
+			}
+
+		});
+
+		mostrardatosDteOt();
+
+
+	});
     
     
   $("#btnguardar").click(function(){
@@ -615,7 +611,7 @@ $("#selectSer").select2({
     allowClear: true,
     placeholder: "Digite el codigo o nombre del servicio.",
     ajax: {
-        url: "http://localhost/app/Cservicio/cmbServicios",
+        url: "<?=  base_url("Cservicio/cmbServicios")  ?>",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -659,7 +655,7 @@ $("#xselectSer").select2({
     allowClear: true,
     placeholder: "Digite el codigo o nombre del servicio.",
     ajax: {
-        url: "http://localhost/app/Cservicio/cmbServicios",
+        url: "<?= base_url("Cservicio/cmbServicios")?>",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -688,57 +684,51 @@ $("#xselectSer").select2({
 });
 
 
+	$("#dispositivo").select2({
+		id: function (data) {
+			return data.num_cedula
+		},
+		allowClear: true,
+		placeholder: "Seleccione el tipo de dispositivo de equipo a agregar.",
+		ajax: {
+			url: "<?= base_url()?>" + "CequipoCliente/cmbDsp",
+			dataType: 'json',
+			delay: 250,
+			data: function (params) {
+				return {
+					q: params.term, // search term
+					page: params.page
+				};
+			},
+			processResults: function (data, params) {
+				// parse the results into the format expected by Select2
+				// since we are using custom formatting functions we do not need to
+				// alter the remote JSON data, except to indicate that infinite
+				// scrolling can be used
+				params.page = params.page || 1;
+
+				return {
+					results: data
+
+				};
+			},
+			cache: true,
+			minimumInputLength: 1
+		}
 
 
-
-
-
-
-$("#dispositivo").select2({
-    id: function (data) {
-        return data.num_cedula
-    },
-    allowClear: true,
-    placeholder: "Seleccione el tipo de dispositivo de equipo.",
-    ajax: {
-        url: "http://localhost/app/CequipoCliente/cmbDsp",
-        dataType: 'json',
-        delay: 250,
-        data: function (params) {
-            return {
-                q: params.term, // search term
-                page: params.page
-            };
-        },
-        processResults: function (data, params) {
-            // parse the results into the format expected by Select2
-            // since we are using custom formatting functions we do not need to
-            // alter the remote JSON data, except to indicate that infinite
-            // scrolling can be used
-            params.page = params.page || 1;
-
-            return {
-                results: data
-
-            };
-        },
-        cache: true,
-        minimumInputLength: 1
-    }
-
-
-});
+	});
 
 
 
 $("#xdispositivo").select2({
     id: function (data) {
-        return data.num_cedula
+        return data.id
     },
     allowClear: true,
     placeholder: "Seleccione el tipo de dispositivo de equipo.",
     ajax: {
-        url: "http://localhost/app/CequipoCliente/cmbDsp",
+        url: baseUrl+"CequipoCliente/cmbDsp",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -781,7 +771,7 @@ $("#marca").select2({
     allowClear: true,
     placeholder: "Seleccione la marca del equipo.",
     ajax: {
-        url: "http://localhost/app/CequipoCliente/cmbMarca",
+        url: baseUrl+"CequipoCliente/cmbMarca",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -817,7 +807,7 @@ $("#xmarca").select2({
     allowClear: true,
     placeholder: "Seleccione la marca del equipo.",
     ajax: {
-        url: "http://localhost/app/CequipoCliente/cmbMarca",
+        url: baseUrl+"CequipoCliente/cmbMarca",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -851,7 +841,7 @@ $("#proveedor").select2({
     allowClear: true,
     placeholder: "Ingrese el nit o el nombre del proveedor",
     ajax: {
-        url: "http://localhost/app/Cproveedor/cmbProveedor",
+        url: baseUrl+"Cproveedor/cmbProveedor",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -885,7 +875,7 @@ $("#xproveedor").select2({
     allowClear: true,
     placeholder: "Ingrese el nit o el nombre del proveedor",
     ajax: {
-        url: "http://localhost/app/Cproveedor/cmbProveedor",
+        url: baseUrl+"Cproveedor/cmbProveedor",
         dataType: 'json',
         delay: 250,
         data: function (params) {
@@ -948,7 +938,7 @@ function mostrardatosDteOt() {
          "scrollY":"300px",
         "scrollCollapse": true,
         "paging":         false,
-        "ajax": "http://localhost/app/Cdetalleot/listarDetalleOt",
+        "ajax": "<?= base_url("Cdetalleot/listarDetalleOt") ?>",
         "columns": [
             {"data": "cons"},
             {"data": "id_ot"},
@@ -1023,7 +1013,7 @@ function mostrardatosDteOt() {
    function mostrardatos() {
     $("#tablaAgenda").dataTable().fnDestroy();
     $('#tablaAgenda').DataTable({
-        "ajax": "http://localhost/app/Cdetalleot/listar",
+        "ajax":"<?= base_url( "Cdetalleot/listar")?>"  ,
         "columns": [
             {"data": "cons"},
             {"data": "fecha_reg"},
